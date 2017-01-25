@@ -1,0 +1,65 @@
+using UnityEngine;
+using System.Collections;
+
+public class Dragon : MonoBehaviour {
+
+	public DragonHealth dragonHealth;
+	public BabyDragonTrail dragonTrail;
+	public World world;
+	public GameObject babyDragon;
+	static public int lives = 3;
+
+	void Start() {
+		if (dragonHealth == null)
+		{
+			dragonHealth = GetComponent<DragonHealth>();
+
+		}
+
+<<<<<<< HEAD
+		dragonTrail = transform.parent.GetComponent<BabyDragonTrail>();
+=======
+		if (lives != 3) {
+			var count = lives + 1;
+			while (3 - count >= 0) {
+				DestroyObject(GameObject.FindWithTag("heart" + count.ToString()));
+				count++;
+			}
+		}
+>>>>>>> 2aa1c90446470f2a49f5a8f74d79551966849ea3
+	}
+
+	void Update () {
+			
+	}
+
+	void OnTriggerEnter2D(Collider2D other) {
+		Debug.Log ("hit " + other.name);
+
+		if (other.tag == "FireOrb") {
+			dragonHealth.DecreaseTemperature();
+			DestroyObject(other.gameObject);
+
+		}
+		else if (other.tag == "IceOrb") {
+			dragonHealth.IncreateTemperature();
+			DestroyObject(other.gameObject);
+		}
+		else if (other.tag == "Rock") {
+			Dragon.lives--;
+			Application.LoadLevel (0);  
+		}
+
+		if (Mathf.Abs(dragonHealth.GetTemperature() - dragonHealth.GetMarkPosition()) < 0.099f) {
+			SpawnBabyDragon();
+			dragonHealth.GenerateNewMarkPosition();
+	 	}
+    }
+
+	void SpawnBabyDragon()
+	{
+		GameObject baby = Instantiate(babyDragon) as GameObject;
+		baby.transform.position = dragonHealth.transform.position;
+		dragonTrail.babyDragons.Insert (0, baby);
+	}
+}
