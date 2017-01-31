@@ -6,7 +6,7 @@ public class Reload : MonoBehaviour
 	
 	void Update () 
 	{
-		if (Input.GetMouseButtonDown(0) && guiTexture.HitTest(Input.mousePosition))
+		if (Input.GetMouseButtonDown(0) && GetComponent<GUITexture>().HitTest(Input.mousePosition))
 		{
 			Application.LoadLevel(0);
 		}

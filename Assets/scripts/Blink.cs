@@ -16,7 +16,7 @@ public class Blink : MonoBehaviour {
 		if (Time.time > changeAt)
 		{
 			changeAt = Time.time + frequency;
-			guiText.enabled = !guiText.enabled;
+			GetComponent<GUIText>().enabled = !GetComponent<GUIText>().enabled;
 		}
 	}
 }

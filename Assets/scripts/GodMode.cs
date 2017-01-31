@@ -8,19 +8,19 @@ public class GodMode : MonoBehaviour
 	void Start()
 	{
 		if (dragon == null) dragon = FindObjectOfType(typeof(Dragon)) as Dragon;
-		guiTexture.color = new Color(0.3f, 0.3f, 0.3f);
+		GetComponent<GUITexture>().color = new Color(0.3f, 0.3f, 0.3f);
 	}
 
 	void Update () 
 	{
-		if (Input.GetMouseButtonDown(0) && guiTexture.HitTest(Input.mousePosition))
+		if (Input.GetMouseButtonDown(0) && GetComponent<GUITexture>().HitTest(Input.mousePosition))
 		{
 			dragon.ToggleGodMode();
 
 			if (dragon.IsInGodMode())
-				guiTexture.color = new Color(0.0f, 1.0f, 0.0f);
+				GetComponent<GUITexture>().color = new Color(0.0f, 1.0f, 0.0f);
 			else
-				guiTexture.color = new Color(0.3f, 0.3f, 0.3f);
+				GetComponent<GUITexture>().color = new Color(0.3f, 0.3f, 0.3f);
 		}
 	}
 }

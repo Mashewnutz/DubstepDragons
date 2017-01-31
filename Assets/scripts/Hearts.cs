@@ -13,8 +13,8 @@ public class Hearts : MonoBehaviour {
 	}
 
 	void Update () {
-		hearts[0].guiTexture.enabled = dragon.lives >= 1;
-		hearts[1].guiTexture.enabled = dragon.lives >= 2;
-		hearts[2].guiTexture.enabled = dragon.lives >= 3;
+		hearts[0].GetComponent<GUITexture>().enabled = dragon.lives >= 1;
+		hearts[1].GetComponent<GUITexture>().enabled = dragon.lives >= 2;
+		hearts[2].GetComponent<GUITexture>().enabled = dragon.lives >= 3;
 	}
 }

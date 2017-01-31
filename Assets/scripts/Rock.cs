@@ -5,7 +5,7 @@ public class Rock : MonoBehaviour {
 
 	public void Push(Vector3 from, float force)
 	{
-		rigidbody2D.AddForce((transform.position - from) * force);
-		rigidbody2D.AddTorque(force);
+		GetComponent<Rigidbody2D>().AddForce((transform.position - from) * force);
+		GetComponent<Rigidbody2D>().AddTorque(force);
 	}
 }
